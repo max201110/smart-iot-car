@@ -1,0 +1,9 @@
+# Build artifacts and secrets
+.venv/
+__pycache__/
+*.py[cod]
+.env
+*.local
+.vscode/
+.idea/
+.DS_Store

@@ -1,30 +1,53 @@
-# Smart IoT Car
+# Smart IoT Car 🚗
 
-An intelligent IoT car project based on STM32F103 and ESP32-CAM, using Blinker for mobile remote control.
+基于 STM32F103 + ESP32-CAM + Blinker 的物联网小车项目，包含移动端遥控、视频监控和基础自动避障能力。仓库同时保留硬件实验代码与摄像头服务示例，适合从单片机控制逐步扩展到远程驾驶。
 
-## Hardware
-- STM32F103 main controller
-- ESP32-CAM camera module
-- Motor driver module
-- Ultrasonic sensor
+## 功能
 
-## Software
-- Arduino / PlatformIO development environment
-- Blinker IoT library
+- 📱 Blinker 移动端远程控制
+- 🎥 ESP32-CAM 实时视频流
+- 🛞 电机与方向控制
+- 📡 Wi‑Fi 网络通信
+- 🚧 超声波避障实验
 
-## Features
-- Mobile app remote control
-- Real-time video streaming
-- Automatic obstacle avoidance
-- Remote monitoring
+## 硬件清单
 
-## Getting Started
+- STM32F103 开发板
+- ESP32-CAM
+- 电机驱动模块与直流电机
+- 超声波测距模块
+- 5V/电池电源、底盘与杜邦线
+
+## 工程结构
+
+| 路径 | 说明 |
+| --- | --- |
+| `Blinker_ESP32_CAM/` | ESP32-CAM 摄像头与网络服务示例 |
+| `*.rar` | 历史工程归档，建议解压后按其中 README 编译 |
+
+## 开发与烧录
+
+ESP32 示例可使用 Arduino IDE：安装对应开发板包和第三方依赖后，选择正确的 ESP32-CAM 板型与串口进行编译烧录。也可以使用 PlatformIO：
+
 ```bash
 pio run
+pio run --target upload
+pio device monitor
 ```
 
-## Note
-This project includes `Blinker_ESP32_CAM` third-party library code.
+首次运行前，请在本地配置 Wi‑Fi、Blinker AuthKey 和摄像头参数；不要把真实密钥提交到 Git。
+
+## 接线与安全
+
+不同电机驱动板的引脚定义可能不同，请以代码中的宏定义和硬件丝印为准。电机首次测试时建议抬起车轮，并使用独立、限流的电机电源，避免 USB 供电过载。
+
+## Roadmap
+
+- [ ] 将历史压缩包拆分为可检索的独立示例
+- [ ] 增加统一的引脚配置文件
+- [ ] 增加串口诊断与断线重连
+- [ ] 补充接线图和演示视频
 
 ## License
+
 MIT License
